@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nigeria House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>House Price Prediction in Nigeria</h2>
+        <form action="/predict" method="post">
+            <label for="bedrooms">Number of Bedrooms:</label>
+            <input type="number" id="bedrooms" name="bedrooms" min="1" max="9" required>
+            
+            <label for="bathrooms">Number of Bathrooms:</label>
+            <input type="number" id="bathrooms" name="bathrooms" min="1" max="9" required>
+            
+            <label for="toilets">Number of Toilets:</label>
+            <input type="number" id="toilets" name="toilets" min="1" max="9" required>
+            
+            <label for="parking_space">Parking Space:</label>
+            <input type="number" id="parking_space" name="parking_space" min="1" max="9" required>
+            
+            <label for="title">Title:</label>
+            <select id="title" name="title">
+                <option value="0">Block of Flats</option>
+                <option value="1">Detached Bungalow</option>
+                <option value="2">Detached Duplex</option>
+                <option value="3">Semi Detached Bungalow</option>
+                <option value="4">Semi Detached Duplex</option>
+                <option value="5">Terraced Bungalow</option>
+                <option value="6">Terraced Duplexes</option>
+            </select>
+            
+            <label for="town">Town:</label>
+            <select id="town" name="town">
+                <option value="0">Aba</option>
+                <option value="1">Abeokuta North</option>
+                <option value="2">Abeokuta South</option>
+                <option value="3">Abraka</option>
+                <option value="4">Ado-Ekiti</option>
+                <option value="5">Ado-Odo/Ota</option>
+                <option value="6">Afijio</option>
+                <option value="7">Agbara</option>
+                <option value="8">Agbara-Igbesa</option>
+                <option value="9">Agege</option>
+                <option value="10">Ajah</option>
+                <option value="11">Akinyele</option>
+                <option value="12">Akure</option>
+                <option value="13">Alimosho</option>
+                <option value="14">Amuwo Odofin</option>
+                <option value="15">Aniocha South</option>
+                <option value="16">Apapa</option>
+                <option value="17">Apo</option>
+                <option value="18">Arepo</option>
+                <option value="19">Asaba</option>
+                <option value="20">Asokoro District</option>
+                <option value="21">Ayobo</option>
+                <option value="22">Badagry</option>
+                <option value="23">Bwari</option>
+                <option value="24">Calabar</option>
+                <option value="25">Central Business District</option>
+                <option value="26">Chikun</option>
+                <option value="27">Dakibiyu</option>
+                <option value="28">Dakwo</option>
+                <option value="29">Danja</option>
+                <option value="30">Dape</option>
+                <option value="31">Dei-Dei</option>
+                <option value="32">Dekina</option>
+                <option value="33">Diplomatic Zones</option>
+                <option value="34">Duboyi</option>
+                <option value="35">Durumi</option>
+                <option value="36">Dutse</option>
+                <option value="37">Ede South</option>
+                <option value="38">Egbe</option>
+                <option value="39">Egbeda</option>
+                <option value="40">Egor</option>
+                <option value="41">Ejigbo</option>
+                <option value="42">Eket</option>
+                <option value="43">Eko Atlantic City</option>
+                <option value="44">Eleme</option>
+                <option value="45">Enugu</option>
+                <option value="46">Epe</option>
+                <option value="47">Ethiope West</option>
+                <option value="48">Ewekoro</option>
+                <option value="49">Gaduwa</option>
+                <option value="50">Galadimawa</option>
+                <option value="51">Garki</option>
+                <option value="52">Gbagada</option>
+                <option value="53">Gudu</option>
+                <option value="54">Guzamala</option>
+                <option value="55">Guzape District</option>
+                <option value="56">Gwagwalada</option>
+                <option value="57">Gwarinpa</option>
+                <option value="58">Ibadan</option>
+                <option value="59">Ibadan North</option>
+                <option value="60">Ibadan North-East</option>
+                <option value="61">Ibadan North-West</option>
+                <option value="62">Ibadan South-West</option>
+                <option value="63">Ibafo</option>
+                <option value="64">Ibarapa North</option>
+                <option value="65">Ibeju</option>
+                <option value="66">Ibeju Lekki</option>
+                <option value="67">Idimu</option>
+                <option value="68">Ido</option>
+                <option value="69">Idu Industrial</option>
+                <option value="70">Ifako-Ijaiye</option>
+                <option value="71">Ifo</option>
+                <option value="72">Ijaiye</option>
+                <option value="73">Ijebu Ode</option>
+                <option value="74">Ijede</option>
+                <option value="75">Ijesha</option>
+                <option value="76">Ijoko</option>
+                <option value="77">Ikeja</option>
+                <option value="78">Ikorodu</option>
+                <option value="79">Ikot Ekpene</option>
+                <option value="80">Ikotun</option>
+                <option value="81">Ikoyi</option>
+                <option value="82">Ikpoba Okha</option>
+                <option value="83">Ikwerre</option>
+                <option value="84">Ilorin East</option>
+                <option value="85">Ilorin South</option>
+                <option value="86">Ilorin West</option>
+                <option value="87">Ilupeju</option>
+                <option value="88">Imota</option>
+                <option value="89">Ipaja</option>
+                <option value="90">Isheri</option>
+                <option value="91">Isheri North</option>
+                <option value="92">Isolo</option>
+                <option value="93">Jabi</option>
+                <option value="94">Jahi</option>
+                <option value="95">Jikwoyi</option>
+                <option value="96">Jos North</option>
+                <option value="97">Jos South</option>
+                <option value="98">KM 46</option>
+                <option value="99">Kabusa</option>
+                <option value="100">Kado</option>
+                <option value="101">Kaduna North</option>
+                <option value="102">Kaduna South</option>
+                <option value="103">Kafe</option>
+                <option value="104">Kagini</option>
+                <option value="105">Kano</option>
+                <option value="106">Karmo</option>
+                <option value="107">Karsana</option>
+                <option value="108">Karshi</option>
+                <option value="109">Karu</option>
+                <option value="110">Katampe</option>
+                <option value="111">Kaura</option>
+                <option value="112">Keffi</option>
+                <option value="113">Ketu</option>
+                <option value="114">Kosofe</option>
+                <option value="115">Kubwa</option>
+                <option value="116">Kuje</option>
+                <option value="117">Kukwaba</option>
+                <option value="118">Kurudu</option>
+                <option value="119">Kusada</option>
+                <option value="120">Kyami</option>
+                <option value="121">Lagos Island</option>
+                <option value="122">Lekki</option>
+                <option value="123">Lokogoma</option>
+                <option value="124">Lugbe District</option>
+                <option value="125">Magboro</option>
+                <option value="126">Magodo</option>
+                <option value="127">Magug</option>
+                <option value="128">Maitama</option>
+                <option value="129">Makoko</option>
+                <option value="130">Mararaba</option>
+                <option value="131">Masha</option>
+                <option value="132">Mowe</option>
+                <option value="133">Mpape</option>
+                <option value="134">Mushin</option>
+                <option value="135">New Gwarinpa</option>
+                <option value="136">Nyanya</option>
+                <option value="137">Obafemi Owode</option>
+                <option value="138">Obio-Akpor</option>
+                <option value="139">Odeda</option>
+                <option value="140">Offa</option>
+                <option value="141">Ogba</option>
+                <option value="142">Ogombo</option>
+                <option value="143">Ogudu</option>
+                <option value="144">Ojo</option>
+                <option value="145">Ojodu</option>
+                <option value="146">Ojodu Berger</option>
+                <option value="147">Ojokoro</option>
+                <option value="148">Ojota</option>
+                <option value="149">Okene</option>
+                <option value="150">Okota</option>
+                <option value="151">Oluyole</option>
+                <option value="152">Onikan</option>
+                <option value="153">Oniru</option>
+                <option value="154">Opebi</option>
+                <option value="155">Opic</option>
+                <option value="156">Oregun</option>
+                <option value="157">Orita</option>
+                <option value="158">Orlu</option>
+                <option value="159">Osapa</option>
+                <option value="160">Oshimili South</option>
+                <option value="161">Oshodi</option>
+                <option value="162">Ota</option>
+                <option value="163">Otukpo</option>
+                <option value="164">Owerri</option>
+                <option value="165">Owerri Municipal</option>
+                <option value="166">Owode</option>
+                <option value="167">Pegi</option>
+                <option value="168">Port-Harcourt</option>
+                <option value="169">Sagamu</option>
+                <option value="170">Satellite Town</option>
+                <option value="171">Shomolu</option>
+                <option value="172">Suleja</option>
+                <option value="173">Utako</option>
+                <option value="174">Victoria Island</option>
+                <option value="175">Wuye</option>
+                <option value="176">Yaba</option>
+                <option value="177">Yaba/Ojuelegba</option>
+                <option value="178">Yelwa</option>
+                <option value="179">Yenagoa</option>
+                <option value="180">Yola North</option>
+                <option value="181">Yola South</option>
+                <option value="182">Yuguda</option>
+                <option value="183">Zango</option>
+                <option value="184">Zaria</option>
+                <option value="185">Zuba</option>
+                <option value="186">Zuru</option>
+                <option value="187">Yelwa</option>
+                <option value="188">Yewa South</option>
+            </select>
+            
+            <label for="state">State:</label>
+            <select id="state" name="state">
+                <option value="0">Abia</option>
+                <option value="1">Abuja</option>
+                <option value="2">Akwa Ibom</option>
+                <option value="3">Anambara</option>
+                <option value="4">Bayelsa</option>
+                <option value="5">Borno</option>
+                <option value="6">Cross River</option>
+                <option value="7">Delta</option>
+                <option value="8">Edo</option>
+                <option value="9">Ekiti</option>
+                <option value="10">Enugu</option>
+                <option value="11">Imo</option>
+                <option value="12">Kaduna</option>
+                <option value="13">Kano</option>
+                <option value="14">Katsina</option>
+                <option value="15">Kogi</option>
+                <option value="16">Kwara</option>
+                <option value="17">Lagos</option>
+                <option value="18">Nasarawa</option>
+                <option value="19">Niger</option>
+                <option value="20">Ogun</option>
+                <option value="21">Osun</option>
+                <option value="22">Oyo</option>
+                <option value="23">Plateau</option>
+                <option value="24">Rivers</option>
+            </select>
+
+            <button type="submit">Predict Price</button>
+        </form>
+        
+        {% if predicted_price %}
+        <div class="result">
+            <h3>Predicted House Price: {{ predicted_price }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
